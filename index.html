@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+
+{% block body_class %}home-page{% endblock %}
+{% block content %}
+<div class="form_box">
+<div class="main">
+<h2>Home Page</h2>
+<form method="POST" action="{{url_for('search')}}">
+    <input type="hidden"  name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+    <label for="district">Select District</label>
+<select id="district" name="district">
+    <option value="">Select</option>
+    <option value="chennai">Chennai</option>
+    <option value="madurai">Madurai</option>
+    <option value="vellore">Vellore</option>
+    <option value="coimbatore">Coimbatore</option>
+    <option value="tiruchirappalli">Tiruchirappalli</option>
+</select>
+  <label for="needs">Select Need:</label>
+<select name="needs" id="needs">
+    <option value="">Select</option>
+    <option value="Food">Food</option>
+    <option value="Water">Water</option>
+    <option value="Clothes">Clothes</option>
+    <option value="Shelter">Shelter</option>
+    <option value="Education">Education</option>
+    <option value="Medical">Medical</option>
+    <option value="Women Safety">Women Safety</option>
+    <option value="Child Support">Child Support</option>
+    <option value="Job Support">Job Support</option>
+    <option value="Disability Support">Disability Support</option>
+    <option value="Disaster Relief">Disaster Relief</option>
+    <option value="Environment">Environment</option>
+</select>
+    <div class="mbtn">
+    <button type="button" onclick="getLocationAndSubmit()">Search NGO</button></div>
+    </div>
+   
+
+<p id="demo"></p>
+<script src="{{url_for('static',filename='js/map.js')}}"></script>
+
+</form>
+</div>
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+    
+
+<!-- </html> -->
+{% endblock %}

@@ -1,0 +1,63 @@
+
+{% extends "layout.html" %}
+{% block body_class %}default-page{% endblock %}
+{% block content %}
+<div class="form_box">
+<div class="content_section">
+    <h2>Login</h2>
+    <form method="POST" action="{{ url_for('login') }}">
+    {{ form.hidden_tag()}}
+    <fieldset class="form_group">
+        <legend class="border_bottom mb-4">JOIN TODAY</legend><br>
+       
+        <div class="form_group">
+            {{form.email.label(class="form_control_Label")}}
+            {%if form.email.errors %}
+            {{ form.email(class="form-control form-control_ig is_invalid")}}
+            <div class="invalid_feedback">
+                {% for error in form.email.errors %}
+                <span>{{error}}
+
+                </span>
+                 {%endfor %}
+            </div>
+            {% else %}
+            {{form.email(class="form_control form-control_ig")}}
+            {%endif%}
+        </div>
+        <div class="form_group">
+            {{form.password.label(class="form_control_Label")}}
+            {%if form.password.errors %}
+            {{ form.password(class="forrm-control form-control_ig is_invalid")}}
+            <div class="invalid_feedback">
+                {% for error in form.password.errors %}
+                <span>{{error}}
+
+                </span>
+                 {%endfor %}
+            </div>
+            {% else %}
+            {{form.password(class="form_control form-control_ig")}}
+            {%endif%}
+        </div>
+     <div class="form_check">
+        {{form.remember(class="form_check-input")}}
+        {{form.remember.label(class="form_check_Label")}}
+     </div>
+    </fieldset>
+    <div class="form_group">
+        {{ form.submit(class="btn btn_outline_info")}}
+    </div>
+    </form>
+</div>
+<small class="text_muted ml-2">
+    <a href="{{ url_for('reset_request') }}">Forgot Password?</a>
+</small>
+<div class="border_top pt-3">
+    <small class="text_method">
+        Need an account?<a class="ml-2" href="{{url_for('register')}}">SIGN UP NOW</a>
+    </small>
+</div>
+</div>
+{% endblock %}
+

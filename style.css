@@ -1,0 +1,331 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background layer */
+.default-page::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-image: url("/static/images/s.jpg");
+    background-size: cover;
+    background-position: center;
+
+    z-index: -1;   /* send behind content */
+
+    animation: animateBg 5s linear infinite;
+}
+.home-page::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("/static/images/ag.avif");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    animation: animateBg 5s linear infinite;
+}
+/* Animation only affects background */
+@keyframes animateBg {
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.content_section{
+   
+       max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  
+
+}
+.form_group{
+    margin-bottom: 15px;
+    
+}
+.form_control {
+    width: 500px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+.form_control_Label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Invalid input */
+.is_invalid {
+    border-color: #e74c3c !important;
+}
+
+.invalid_feedback {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Checkbox */
+.form_check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form_check-input {
+    margin-right: 8px;
+    width:16px;
+    height:16px;
+}
+
+.form_check_Label {
+    font-size: 14px;
+}
+.voice-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff4b5c;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+
+/* Submit button */
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn_outline_info {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn_outline_info:hover {
+    background-color: #2980b9;
+}
+
+/* Links */
+.text_method a {
+    color: #3498db;
+    text-decoration: none;
+    padding-bottom: 60px;
+}
+
+.text_method a:hover {
+    text-decoration: underline;
+}
+
+/* Footer small */
+.text_muted a {
+    font-size: 20px;
+    color: #7f8c8d;
+    text-decoration: none;
+    padding-bottom: 50px;
+}
+
+.text_muted a:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+/* Border top */
+.border_top {
+    border-top: 1px solid #ddd;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+
+
+/* Container / Navbar */
+/* Top navbar container */
+
+.down {
+    text-align: center;
+    padding: 8px;
+    background-color: #2c3e50;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.down:hover{
+    color:aqua;
+}
+/* Container for home page main section */
+.main {
+    max-width: 600px;      /* limit width */
+    margin: 50px auto;     /* center horizontally and add top spacing */
+    padding: 30px;
+    background-color: #f9f9f9; /* light background */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* subtle shadow */
+    text-align: left;
+}
+
+/* Heading */
+.main h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Labels */
+.main label {
+    display: block;        /* each label on its own line */
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: black;
+    font-size: 20px;
+}
+
+/* Select dropdowns */
+.main select {
+    width: 100%;           /* full width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Submit button */
+.main .mbtn button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main .mbtn button:hover {
+    background-color: #0056b3;
+}
+
+/* Optional: Responsive for small screens */
+@media (max-width: 640px) {
+    .main {
+        margin: 20px;
+        padding: 20px;
+    }
+}
+.ig{
+width:auto;
+height:60px; 
+padding-left: 5px; 
+ 
+
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3d8ec9;
+    padding: 15px 40px;
+}
+
+/* Left side */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    height: 45px;
+}
+
+.logo-title h1 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Right side */
+.links {
+    display: flex;
+    gap: 25px;   /* space between Home Add NGO Login Register */
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.links a:hover {
+    text-decoration: underline;
+    color: red;
+}
+.screen{
+   color: antiquewhite;
+    border-radius: 2px;
+    align-items: center;
+    justify-content:center;
+    display: flex;
+}
+.wave {
+    width: 60px;
+    height: 20px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    visibility: hidden;
+}
+
+.wave span {
+    width: 5px;
+    height: 10px;
+    background: #00ffcc;
+    animation: bounce 1s infinite ease-in-out;
+}
+
+.wave.active {
+    visibility: visible;
+}
+
+.wave.active span:nth-child(1) { animation-delay: 0s; }
+.wave.active span:nth-child(2) { animation-delay: 0.2s; }
+.wave.active span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%,100% { height: 10px; }
+    50% { height: 30px; }
+}
+
+

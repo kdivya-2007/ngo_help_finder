@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content_section">
+    <h2>Reset Password</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.confirm_password.label }}<br>
+            {{ form.confirm_password(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+</div>
+
+{% endblock %}

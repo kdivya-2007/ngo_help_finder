@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="content_section">
+    <h2>Add NGO</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        <div>
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.district.label }}<br>
+            {{ form.district(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.address.label }}<br>
+            {{ form.address(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.contact.label }}<br>
+            {{ form.contact(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.needs.label }}<br>
+            {{ form.needs(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.latitude.label }}<br>
+            {{ form.latitude(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.longitude.label }}<br>
+            {{ form.longitude(class="form-control") }}
+        </div>
+
+        <br>
+
+        <div>
+            {{ form.submit(class="btn btn-success") }}
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

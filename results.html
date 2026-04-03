@@ -1,0 +1,112 @@
+{%extends "layout.html"%}
+{%block content%}
+<h2>NGOs Results</h2>
+<button onclick="showList()">Show List</button>
+<button onclick="showMap()">Show Map</button>
+<hr>
+
+<div id="listView">
+{% if all_ngos %}
+    {% for ngo in all_ngos %}
+        <div>
+            <h3>{{ ngo.name }}</h3>
+            <p>District: {{ ngo.district }}</p>
+            <p>Address: {{ ngo.address }}</p>
+            <p>Contact: {{ ngo.contact }}</p>
+            <p>needs: {{ ngo.needs if ngo.needs else "No needs available" }} </p>
+            
+          
+            <hr>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No NGOs found in this district.</p>
+{% endif %}
+</div>
+<div id="mapView" style="display:none;">
+    {%if user_lat and user_lon %}
+    <div id="map" style="height:400px;width:100%;"></div>
+    {%else %}
+    <p>Location required to show nearest NGOs.</p>
+    {%endif%}
+</div>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script>
+
+const ngos = JSON.parse('{{ nearest_ngos | default([]) | tojson | safe }}');
+const userLat=JSON.parse('{{user_lat|tojson|safe}}');
+const userLon=JSON.parse('{{user_lon|tojson|safe}}');
+
+function showList() {
+
+    document.getElementById("listView").style.display = "block";
+    document.getElementById("mapView").style.display = "none";
+}
+
+function showMap() {
+    document.getElementById("listView").style.display = "none";
+    document.getElementById("mapView").style.display = "block";
+
+    if (userLat && userLon) {
+        initMap();
+    } else {
+        alert("Location not available.");
+    }
+}
+let map;
+function initMap() {
+    if(map){
+        map.remove();
+    }
+
+     map = L.map('map').setView(
+        [userLat,userLon],
+        12
+    );
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+    const userMarker=L.marker([userLat,userLon])
+    .addTo(map)
+    .bindPopup("<b>Your location</b>")
+    .openPopup();
+    const bounds=L.latLngBounds([userLat,userLon]);
+
+    ngos.forEach(function(ngo) {
+
+    if (!ngo.latitude || !ngo.longitude) return;
+
+    L.marker([ngo.latitude, ngo.longitude])
+        .addTo(map)
+        .bindPopup(
+            "<b>" + ngo.name + "</b><br>" +
+            "Distance: " + ngo.distance + " km"
+        );
+
+    L.polyline([[userLat,userLon],[ngo.latitude,ngo.longitude]],{color:"blue"}).addTo(map);
+
+    const midLat=(userLat+ngo.latitude)/2;
+    const midLon=(userLon+ngo.longitude)/2;
+
+    L.marker([midLat, midLon], {
+        icon: L.divIcon({
+            className: "distance-label",
+            html: '<div style="padding:4px;border-radius:20px;font-size:15px;font-weight:bold;color:black;">'
+                  + ngo.distance + ' km</div>'
+        })
+    }).addTo(map);
+
+    bounds.extend([ngo.latitude,ngo.longitude]);
+});
+    
+    map.fitBounds(bounds, {
+    padding: [50, 50],
+    animate: true,
+    duration: 1.5
+});
+}
+
+</script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+{%endblock%}

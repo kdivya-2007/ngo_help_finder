@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body_class %}default-page{% endblock %}
+{% block content %}
+
+<h2>NGO Details</h2>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>District</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Needs</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for ngo in ngos %}
+        <tr>
+            <td>{{ ngo.id }}</td>
+            <td>{{ ngo.name }}</td>
+            <td>{{ ngo.district }}</td>
+            <td>{{ ngo.address }}</td>
+            <td>{{ ngo.contact }}</td>
+            <td>{{ ngo.needs }}</td>
+            <td>{{ ngo.latitude }}</td>
+            <td>{{ ngo.longitude }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
