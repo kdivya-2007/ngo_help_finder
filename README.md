@@ -17,5 +17,5 @@ this project helps users find nearby NGO support using Voice command and manuual
 - expand to all districts
 - multi-language support
 ##  Demo Video
-
+Quick demo of voice search, location detection, and NGO results.
 https://www.youtube.com/watch?v=slps_V0rwnY
